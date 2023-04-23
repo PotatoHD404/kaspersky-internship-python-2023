@@ -114,7 +114,9 @@ async def say_hello(search_id: str):
             status_code=404,
             content={"message": f"Search was not found"},
         )
-    return {"finished": search.finished, "paths": json.loads(search.paths)}
+    if search.finished:
+        return {"finished": True, "paths": json.loads(search.paths)}
+    return {"finished": False}
 
 
 if __name__ == "__main__":

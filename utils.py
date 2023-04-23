@@ -39,7 +39,7 @@ def check_creation_time(file_creation_time: datetime, creation_time: dict) -> bo
 
 
 def apply_filters(file_path: str, file_content: bytes, filters: SearchFilters, zip_info: ZipInfo | None) -> bool:
-    print(f"Checking {file_path}")
+
     if filters.text is not None:
         try:
             if filters.text not in file_content.decode("utf-8"):
