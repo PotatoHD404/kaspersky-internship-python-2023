@@ -1,15 +1,11 @@
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, String, Boolean, UUID, ARRAY
 
 from database import Base
 
 
-class User(Base):
-    __tablename__ = "users"
+class Search(Base):
+    __tablename__ = "searches"
 
-    id = Column(Integer, primary_key=True, index=True)
-    email = Column(String, unique=True, index=True)
-    hashed_password = Column(String)
-    is_active = Column(Boolean, default=True)
-
-    items = relationship("Item", back_populates="owner")
+    id = Column(UUID, primary_key=True, index=True)
+    finished = Column(Boolean)
+    paths = Column(String)
